@@ -8,7 +8,7 @@ const App = () => {
       base:`"nav main"`,
       lg:`"nav nav" "aside main"`
     }}>
-      <GridItem area="nav" bg="blue"> <NavBar/> </GridItem>
+      <GridItem area="nav"> <NavBar/> </GridItem>
       <Show above='lg'>
       <GridItem area="aside" bg="red"> Aside </GridItem>
       </Show>
