@@ -6,14 +6,13 @@ import GamesGrid from "./components/GamesGrid";
 const App = () => {
   return (
     <Grid templateAreas={{
-      base:`"nav main"`,
+      base:`"nav" "main"`,
       lg:`"nav nav" "aside main"`
-    }}>
+    }} p={4}>
       <GridItem area="nav"> <NavBar/> </GridItem>
       <Show above='lg'>
       <GridItem area="aside"> Aside </GridItem>
       </Show>
-      
       <GridItem area="main"> <GamesGrid/> </GridItem>
     </Grid>
   );
