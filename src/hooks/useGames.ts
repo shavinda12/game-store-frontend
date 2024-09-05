@@ -2,9 +2,18 @@ import { useEffect, useState } from "react"
 import apiClient from "../services/api-client"
 import { AxiosError, CanceledError } from "axios"
 
-interface Games{
+
+export interface Platforms{
     id:number,
-    name:string
+    name:string,
+    slug:string
+}
+
+export interface Games{
+    id:number,
+    name:string,
+    background_image:string,
+    parent_platforms:{platform:Platforms}[]//special type of object want to learn more
 }
 
 interface GameList{
