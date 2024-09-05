@@ -14,6 +14,7 @@ export interface Games{
     name:string,
     background_image:string,
     parent_platforms:{platform:Platforms}[]//special type of object want to learn more
+    metacritic:number
 }
 
 interface GameList{
