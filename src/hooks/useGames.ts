@@ -12,8 +12,9 @@ export interface Games{
     id:number,
     name:string,
     background_image:string,
-    parent_platforms:{platform:Platforms}[]//special type of object want to learn more
-    metacritic:number
+    parent_platforms:{platform:Platforms}[],//special type of object want to learn more
+    metacritic:number,
+    rating_top:number
 }
 
 

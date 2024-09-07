@@ -3,6 +3,7 @@ import { Games } from "../hooks/useGames";
 import PlatFormIconList from "./PlatFormIconList";
 import GameScoreBadge from "./GameScoreBadge";
 import getOptimizedImageUrl from "../services/image-url";
+import Emoji from "./Emoji";
 
 
 interface GameCardProps {
@@ -14,11 +15,12 @@ const GameCard = ({ game }: GameCardProps) => {
     <Card>
       <Image src={getOptimizedImageUrl(game.background_image)} />
       <CardBody>
-        <Heading>{game.name}</Heading>
-        <HStack justifyContent="space-between">
+        <HStack justifyContent="space-between" mb={3}>
         <PlatFormIconList platform={game.parent_platforms.map((p)=>(p.platform))}/>
         <GameScoreBadge score={game.metacritic}/>
         </HStack>
+        <Heading>{game.name}</Heading>
+        <Emoji rating={game.rating_top}/>
       </CardBody>
     </Card>
   );
