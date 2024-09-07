@@ -5,9 +5,10 @@ import LoadingSkeletonSideBar from "./LoadingSkeletonSideBar";
 
 interface GenreListProps{
   onSelect:(genres:Genres)=>void
+  selectedGenre:Genres|null
 }
 
-const GenreList = ({onSelect}:GenreListProps) => {
+const GenreList = ({onSelect,selectedGenre}:GenreListProps) => {
   const { data, isLoading } = useGenres();
   const skeleton = [1, 2, 3, 4, 5, 6];
 
@@ -26,7 +27,7 @@ const GenreList = ({onSelect}:GenreListProps) => {
               boxSize="32px"
               src={getOptimizedImageUrl(rows.image_background)}
             />
-            <Button variant="link" onClick={()=>onSelect(rows)}>{rows.name}</Button>
+            <Button variant="link" onClick={()=>onSelect(rows)} fontWeight={rows.id===selectedGenre?.id?"bold":"normal"}>{rows.name}</Button>
           </HStack>
         </ListItem>
       ))}

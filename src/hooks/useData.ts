@@ -15,8 +15,10 @@ const useData=<T>(endPoint:string,requestConfig?:AxiosRequestConfig,deps?:any[])
 
     const getDataList=async(controller:AbortController)=>{
         try{
-        const result=await apiClient.get<FetchingData<T>>(endPoint,{signal:controller.signal,...requestConfig});
+            console.log(`platform id is ${requestConfig?.params.selectedPlatform}`)
+            const result=await apiClient.get<FetchingData<T>>(endPoint,{signal:controller.signal,...requestConfig});
             setData(result.data.results);
+            console.log(result.data.results);
             setLoading(false)
         }catch(error){
             if(error instanceof CanceledError)return

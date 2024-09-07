@@ -1,12 +1,23 @@
-import { Grid, GridItem, Show } from "@chakra-ui/react";
+import { Grid, GridItem, HStack, Show } from "@chakra-ui/react";
 import NavBar from "./components/NavBar";
 import GamesGrid from "./components/GamesGrid";
 import GenreList from "./components/GenreList";
 import { useState } from "react";
 import { Genres } from "./hooks/useGenres";
+import PlatformSelector from "./components/PlatformSelector";
+import { Platforms } from "./hooks/useGames";
+import SortSelector from "./components/SortSelector";
+
+export interface GameQuery {
+  genre: Genres | null;
+  platform: Platforms | null;
+  sortOrder: string | null;
+  search: string | null
+}
 
 const App = () => {
-  const [selectedGenre, setSelectedGenre] = useState<Genres | null>(null);
+  const [gameQuery, setGameQuery] = useState<GameQuery>({} as GameQuery);
+
   return (
     <Grid
       templateAreas={{
@@ -21,17 +32,33 @@ const App = () => {
     >
       <GridItem area="nav">
         {" "}
-        <NavBar />{" "}
+        <NavBar
+          setSearchInput={(search) => setGameQuery({ ...gameQuery, search })}
+        />{" "}
       </GridItem>
       <Show above="lg">
         <GridItem area="aside" paddingX={5}>
           {" "}
-          <GenreList onSelect={(genre)=>setSelectedGenre(genre)}/>{" "}
+          <GenreList
+            selectedGenre={gameQuery.genre}
+            onSelect={(genre) => setGameQuery({ ...gameQuery, genre })}
+          />{" "}
         </GridItem>
       </Show>
       <GridItem area="main">
         {" "}
-        <GamesGrid selectedGenre={selectedGenre}/>{" "}
+        <HStack mb={4} px={3}>
+          <PlatformSelector
+            platform={gameQuery.platform}
+            onSelect={(platform) => setGameQuery({ ...gameQuery, platform })}
+          />
+          <SortSelector
+            selectSort={(sortOrder) =>
+              setGameQuery({ ...gameQuery, sortOrder })
+            }
+          />
+        </HStack>
+        <GamesGrid gameQuery={gameQuery} />{" "}
       </GridItem>
     </Grid>
   );

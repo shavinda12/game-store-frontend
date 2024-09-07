@@ -1,15 +1,20 @@
-import { HStack, Image, Text } from '@chakra-ui/react'
-import LogoImage from '../assets/logo.webp'
-import DarkModeSwitch from './DarkModeSwitch'
+import { HStack, Image, Text } from "@chakra-ui/react";
+import LogoImage from "../assets/logo.webp";
+import DarkModeSwitch from "./DarkModeSwitch";
+import SearchInput from "./SearchInput";
 
-
-const NavBar = () => {
-  return (
-    <HStack justifyContent="space-between" p="10px">
-        <Image src={LogoImage} boxSize="60px"/>
-        <DarkModeSwitch/>
-    </HStack>
-  )
+interface NavBarProps{
+  setSearchInput:(value:string)=>void
 }
 
-export default NavBar
+const NavBar = ({setSearchInput}:NavBarProps) => {
+  return (
+    <HStack p="10px">
+      <Image src={LogoImage} boxSize="60px" />
+      <SearchInput setSearchInput={(value)=>setSearchInput(value)}/>
+      <DarkModeSwitch />
+    </HStack>
+  );
+};
+
+export default NavBar;
