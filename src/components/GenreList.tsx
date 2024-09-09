@@ -31,7 +31,7 @@ const GenreList = ({ onSelect, selectedGenre }: GenreListProps) => {
               <LoadingSkeletonSideBar />
             </div>
           ))}
-        {data.map((rows) => (
+        {data?.results.map((rows) => (
           <ListItem key={rows.id} paddingY={2}>
             <HStack>
               <Image

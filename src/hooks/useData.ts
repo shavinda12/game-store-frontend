@@ -3,7 +3,7 @@ import apiClient from "../services/api-client";
 import { AxiosError, AxiosRequestConfig, CanceledError } from "axios";
 
 
-interface FetchingData <T>{
+export interface FetchingData <T>{
     count:number,
     results:T[]
 }
