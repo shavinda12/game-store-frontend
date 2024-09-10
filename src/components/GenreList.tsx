@@ -16,8 +16,9 @@ interface GenreListProps {
 }
 
 const GenreList = ({ onSelect, selectedGenre }: GenreListProps) => {
-  const { data, isLoading } = useGenres();
+  const { data, isLoading} = useGenres();
   const skeleton = [1, 2, 3, 4, 5, 6];
+
 
   return (
     <>
