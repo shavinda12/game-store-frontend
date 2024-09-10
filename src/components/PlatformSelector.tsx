@@ -1,7 +1,7 @@
 import { Button, Menu, MenuButton, MenuItem, MenuList } from "@chakra-ui/react";
 import { BiChevronDown } from "react-icons/bi";
 import usePlatform from "../hooks/usePlatform";
-import { Platforms } from "../hooks/useGames";
+import { Platforms } from "../hooks/usePlatform";
 
 interface PlatformSelectorProps{
     onSelect:(platform:Platforms)=>void
