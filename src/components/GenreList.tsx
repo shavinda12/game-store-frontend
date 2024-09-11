@@ -12,13 +12,12 @@ import LoadingSkeletonSideBar from "./LoadingSkeletonSideBar";
 
 interface GenreListProps {
   onSelect: (genres: Genres) => void;
-  selectedGenre: Genres | null;
+  selectedGenreId?: number;
 }
 
-const GenreList = ({ onSelect, selectedGenre }: GenreListProps) => {
-  const { data, isLoading} = useGenres();
+const GenreList = ({ onSelect, selectedGenreId }: GenreListProps) => {
+  const { data, isLoading } = useGenres();
   const skeleton = [1, 2, 3, 4, 5, 6];
-
 
   return (
     <>
@@ -45,7 +44,7 @@ const GenreList = ({ onSelect, selectedGenre }: GenreListProps) => {
                 textAlign="left"
                 variant="link"
                 onClick={() => onSelect(rows)}
-                fontWeight={rows.id === selectedGenre?.id ? "bold" : "normal"}
+                fontWeight={rows.id === selectedGenreId ? "bold" : "normal"}
               >
                 {rows.name}
               </Button>
