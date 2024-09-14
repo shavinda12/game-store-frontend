@@ -3,15 +3,13 @@ import LogoImage from "../assets/logo.webp";
 import DarkModeSwitch from "./DarkModeSwitch";
 import SearchInput from "./SearchInput";
 
-interface NavBarProps{
-  setSearchInput:(value:string)=>void
-}
 
-const NavBar = ({setSearchInput}:NavBarProps) => {
+
+const NavBar = () => {
   return (
     <HStack p="10px">
       <Image src={LogoImage} boxSize="60px" />
-      <SearchInput setSearchInput={(value)=>setSearchInput(value)}/>
+      <SearchInput/>
       <DarkModeSwitch />
     </HStack>
   );
