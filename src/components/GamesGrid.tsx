@@ -1,10 +1,11 @@
-import { SimpleGrid, Spinner, Text } from "@chakra-ui/react";
+import { Box, SimpleGrid, Spinner, Text } from "@chakra-ui/react";
 import useGames from "../hooks/useGames";
 import GameCard from "./GameCard";
 import LoadingSkeleton from "./LoadingSkeleton";
 import GameCardContainer from "./GameCardContainer";
 import React from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
+import { Link } from "react-router-dom";
 
 
 
@@ -39,7 +40,10 @@ const GamesGrid = () => {
         {data?.pages.map((page, index) => (
           <React.Fragment key={index}>
             {page.results.map((page) => (
-              <GameCard key={page.id} game={page} />
+              <Box _hover={{transform:'scale(1.03)',transition:'transform .15s ease-in'}}>
+                <GameCard key={page.id} game={page}/>
+              </Box>
+              
             ))}
           </React.Fragment>
         ))}

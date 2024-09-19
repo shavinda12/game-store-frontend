@@ -1,10 +1,9 @@
 import { Button, Menu, MenuButton, MenuItem, MenuList } from "@chakra-ui/react";
 import { BiChevronDown } from "react-icons/bi";
-import useGameQueryStore from "../store";
-
+import useGameQueryStore from "../stores/store";
 
 const SortSelector = () => {
-  const setSortOrder=useGameQueryStore(s=>s.setSortOrder)
+  const setSortOrder = useGameQueryStore((s) => s.setSortOrder);
 
   const sortOrder = [
     { value: "", lable: "Relevance" },
@@ -21,7 +20,9 @@ const SortSelector = () => {
       </MenuButton>
       <MenuList>
         {sortOrder.map((sort) => (
-          <MenuItem key={sort.value} onClick={()=>setSortOrder(sort.value)}>{sort.lable}</MenuItem>
+          <MenuItem key={sort.value} onClick={() => setSortOrder(sort.value)}>
+            {sort.lable}
+          </MenuItem>
         ))}
       </MenuList>
     </Menu>
