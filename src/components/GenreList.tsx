@@ -9,15 +9,13 @@ import {
 import useGenres from "../hooks/useGenres";
 import getOptimizedImageUrl from "../services/image-url";
 import LoadingSkeletonSideBar from "./LoadingSkeletonSideBar";
-import useGameQueryStore from "../store";
-
-
+import useGameQueryStore from "../stores/store";
 
 const GenreList = () => {
   const { data, isLoading } = useGenres();
   const skeleton = [1, 2, 3, 4, 5, 6];
-  const gameQuery=useGameQueryStore(s=>s.gameQuery);
-  const setGenreId=useGameQueryStore(s=>s.setGenreId)
+  const gameQuery = useGameQueryStore((s) => s.gameQuery);
+  const setGenreId = useGameQueryStore((s) => s.setGenreId);
 
   return (
     <>
@@ -43,8 +41,8 @@ const GenreList = () => {
                 whiteSpace="wrap"
                 textAlign="left"
                 variant="link"
-                onClick={()=>setGenreId(rows.id)}
-                fontWeight={rows.id === gameQuery.genreId? "bold" : "normal"}
+                onClick={() => setGenreId(rows.id)}
+                fontWeight={rows.id === gameQuery.genreId ? "bold" : "normal"}
               >
                 {rows.name}
               </Button>

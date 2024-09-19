@@ -1,4 +1,4 @@
-import axios, { AxiosRequestConfig } from "axios";
+import axios, {AxiosRequestConfig } from "axios";
 
 
 export interface FetchingData <T>{
@@ -6,6 +6,8 @@ export interface FetchingData <T>{
     next:string|null,
     results:T[]
 }
+
+
 
 const axiosInstace= axios.create({
     baseURL:'https://api.rawg.io/api',
@@ -23,6 +25,11 @@ class APIClient<T>{
 
     getAll=(config:AxiosRequestConfig)=>{
         return axiosInstace.get<FetchingData<T>>(this.endPoint,config)
+                           .then(res=>res.data)
+    }
+
+    getGameDetails=(slug:string|number)=>{
+        return axiosInstace.get<T>(this.endPoint+'/'+slug)
                            .then(res=>res.data)
     }
 

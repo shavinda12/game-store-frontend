@@ -4,6 +4,7 @@ import PlatFormIconList from "./PlatFormIconList";
 import GameScoreBadge from "./GameScoreBadge";
 import getOptimizedImageUrl from "../services/image-url";
 import Emoji from "./Emoji";
+import { Link } from "react-router-dom";
 
 
 interface GameCardProps {
@@ -19,7 +20,7 @@ const GameCard = ({ game }: GameCardProps) => {
         <PlatFormIconList platform={game.parent_platforms.map((p)=>(p.platform))}/>
         <GameScoreBadge score={game.metacritic}/>
         </HStack>
-        <Heading>{game.name}</Heading>
+        <Heading><Link to={`games/:${game.slug}`}>{game.name}</Link></Heading>
         <Emoji rating={game.rating_top}/>
       </CardBody>
     </Card>
