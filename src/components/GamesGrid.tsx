@@ -5,7 +5,7 @@ import LoadingSkeleton from "./LoadingSkeleton";
 import GameCardContainer from "./GameCardContainer";
 import React from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
-import { Link } from "react-router-dom";
+
 
 
 
