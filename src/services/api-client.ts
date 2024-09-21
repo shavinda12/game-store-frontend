@@ -25,7 +25,7 @@ class APIClient<T>{
 
     getAll=(config:AxiosRequestConfig)=>{
         return axiosInstace.get<FetchingData<T>>(this.endPoint,config)
-                           .then(res=>res.data)
+                           .then(res=> res.data)
     }
 
     getGameDetails=(slug:string|number)=>{
