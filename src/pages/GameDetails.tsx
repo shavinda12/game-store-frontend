@@ -1,9 +1,9 @@
 import { useParams } from "react-router-dom";
 import useGameDetails from "../hooks/useGameDetails";
-import { Heading,Spinner} from "@chakra-ui/react";
+import { Heading, Spinner } from "@chakra-ui/react";
 import ExpandableText from "../components/ExpandableText";
 import DefinitionList from "../components/DefinitionList";
-
+import GameTrailor from "../components/GameTrailor";
 
 const GameDetailsPage = () => {
   const { slug } = useParams(); //getting the slug parameter using the routes
@@ -14,8 +14,8 @@ const GameDetailsPage = () => {
     <div>
       <Heading>{data?.name}</Heading>
       <ExpandableText>{data?.description_raw}</ExpandableText>
-      <DefinitionList data={data}/>
-      
+      <DefinitionList data={data} />
+      <GameTrailor gameId={data?.id} />
     </div>
   );
 };
