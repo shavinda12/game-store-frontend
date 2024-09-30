@@ -6,7 +6,6 @@ import { Trailor } from "../entities/Trailor";
 
 
 const useGameTrailor=(gameId:number)=>{
-    console.log(`gameId is ${gameId}`)
     const apiClient=new APIClient<Trailor>(`/games/${gameId}/movies`)
     return useQuery({
     queryKey:['gameTrailor',gameId],
