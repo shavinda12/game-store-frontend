@@ -4,6 +4,7 @@ import { Heading, Spinner } from "@chakra-ui/react";
 import ExpandableText from "../components/ExpandableText";
 import DefinitionList from "../components/DefinitionList";
 import GameTrailor from "../components/GameTrailor";
+import GameScreenShots from "../components/GameScreenShots";
 
 const GameDetailsPage = () => {
   const { slug } = useParams(); //getting the slug parameter using the routes
@@ -16,6 +17,7 @@ const GameDetailsPage = () => {
       <ExpandableText>{data?.description_raw}</ExpandableText>
       <DefinitionList data={data} />
       <GameTrailor gameId={data?.id} />
+      <GameScreenShots gameId={data?.id}/>
     </div>
   );
 };
